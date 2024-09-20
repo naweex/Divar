@@ -14,7 +14,8 @@ class OptionService {
         this.#categoryModel = CategoryModel
     }
     async find(){
-        
+        const options = await this.#model.find({} ,{__v : 0} , {sort : {_id : -1}}).populate([{path : 'category' , select :{name : 1 , slug : 1}}]);
+        return options;        
     }
     async create(optionDto){
       const category = await this.checkExistById(optionDto.category);
@@ -27,6 +28,17 @@ class OptionService {
       const option = await this.#model.create(optionDto)
       return option;
     }
+    async findById (id){
+        return await this.checkExistById(id)
+    }
+    async findByCategoryId (category){
+        return await this.#model.find({category} , {__v : 0}).populate([{path : 'category' , select :{name : 1 , slug : 1}}]);
+    }
+    async findByCategoryId (category){
+        const options = await this.#model.aggregate([
+            
+        ])
+    }
     async checkExistById(id){
         const category = await this.#categoryModel.findById(id)
         if(!category) throw new createHttpError.NotFound(OptionMessage.NotFound)
@@ -37,6 +49,7 @@ class OptionService {
         if(isExist) throw new createHttpError.Conflict(OptionMessage.AlreadyExist)
             return null;
     }
+   
     
 }
 

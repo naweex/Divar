@@ -23,6 +23,9 @@ class OptionController {
     }
 async findByCategoryId (req , res , next){
     try {
+        const {category} = req.params;
+        const options = await this.#service.findByCategoryId(category)
+        return res.json(options)
 
     } catch (error) {
         next(error)
@@ -31,7 +34,19 @@ async findByCategoryId (req , res , next){
 }
 async findById (req , res , next){
     try {
+        const {id} = req.params;
+        const option = await this.#service.findById(id)
+        return res.json(option)
+    } catch (error) {
+        next(error)
+    }
 
+}
+async findByCategorySlug(req , res , next){
+    try {
+        const {slug} = req.params;
+        const option = await this.#service.findById(slug)
+        return res.json(option)
     } catch (error) {
         next(error)
     }
@@ -39,6 +54,8 @@ async findById (req , res , next){
 }
 async find (req , res , next){
     try {
+        const options = await this.#service.find();
+        return res.json(options)
 
     } catch (error) {
         next(error)
