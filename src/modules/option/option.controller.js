@@ -45,8 +45,8 @@ async findById (req , res , next){
 async findByCategorySlug(req , res , next){
     try {
         const {slug} = req.params;
-        const option = await this.#service.findById(slug)
-        return res.json(option)
+        const options = await this.#service.findByCategorySlug(slug)
+        return res.json(options)
     } catch (error) {
         next(error)
     }

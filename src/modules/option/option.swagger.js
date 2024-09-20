@@ -73,6 +73,21 @@
  *          200:
  *              description: successfully
  */
+/**
+ * @swagger
+ * /option/by-category-slug/{slug}:
+ *  get:
+ *      summary: get all options of category
+ *      tags:
+ *          -   option
+ *      parameters:
+ *          -   in: path
+ *              name: slug
+ *              type: string
+ *      responses:
+ *          200:
+ *              description: successfully
+ */
 
 /**
  * @swagger

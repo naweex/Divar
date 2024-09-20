@@ -34,10 +34,43 @@ class OptionService {
     async findByCategoryId (category){
         return await this.#model.find({category} , {__v : 0}).populate([{path : 'category' , select :{name : 1 , slug : 1}}]);
     }
-    async findByCategoryId (category){
+    async findByCategorySlug (slug){
         const options = await this.#model.aggregate([
+           {
+               $lookup : {
+                  from : 'categories' ,
+                  localField : 'category' ,
+                  foreignField : '_id',
+                  as : 'category'
+
+                }
+            },
+            {
+                $unwind : '$category'
+            },
+            {
+                $addFields : {
+                    categorySlug : '$category.slug' ,
+                    categoryName : '$category.name' ,
+                    categoryIcon : 'category.icon' ,
+
+                }
+            },
+                {
+                    $project : {
+                        category : 0 ,
+                        __v : 0
+
+                    }
+                },
+                {
+                    $match : {
+                        categorySlug : slug
+                    }
+                }
             
-        ])
+        ]);
+        return options 
     }
     async checkExistById(id){
         const category = await this.#categoryModel.findById(id)
