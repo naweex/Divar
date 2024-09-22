@@ -10,13 +10,23 @@ class OptionController {
     }
     async create (req , res , next){
         try {
-            const {title , key , enum: list , guid , type , category} = req.body;
-            await this.#service.create({title , key , enum: list , guid , type , category})
+            const {title , key , enum: list , guid , type , category , required} = req.body;
+            await this.#service.create({title , key , enum: list , guid , type , category , required})
             return res.status(HttpCodes.CREATED).json({
                 message : OptionMessage.Created
             })
-      
-            
+        } catch (error) {
+            next(error)
+        }
+    }
+    async update (req , res , next){
+        try {
+            const {title , key , enum: list , guid , type , category , required} = req.body;
+            const {id} = req.params;
+            await this.#service.update(id , {title , key , enum: list , guid , type , category , required})
+            return res.json({
+                message : OptionMessage.Updated
+            })
         } catch (error) {
             next(error)
         }
@@ -37,6 +47,18 @@ async findById (req , res , next){
         const {id} = req.params;
         const option = await this.#service.findById(id)
         return res.json(option)
+    } catch (error) {
+        next(error)
+    }
+
+}
+async removeById (req , res , next){
+    try {
+        const {id} = req.params;
+        await this.#service.removeById(id)
+        return res.json({
+            message : OptionMessage.Deleted
+        })
     } catch (error) {
         next(error)
     }

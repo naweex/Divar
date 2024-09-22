@@ -6,7 +6,9 @@ router.post('/' , optionController.create)
 router.get('/by-category/:category' , optionController.findByCategoryId)
 router.get('/by-category-slug/:slug' , optionController. findByCategorySlug)
 router.get('/:id' , optionController.findById)
+router.delete('/:id' , optionController.removeById)
 router.get('/' , optionController.find)
+router.put('/:id' , optionController.update)
 module.exports = {
     OptionRoutes : router
 }
