@@ -9,13 +9,6 @@ const CategorySchema = new Schema({
 } , {versionKey : false , id : false , toJSON : {virtuals : true}})
 
 
-/**
- * Category schema 
- * 
- * @param refrence string,
- * 
- * @returns void
- */
 CategorySchema.virtual('children' , {
     ref : 'category' ,
     localField : '_id' ,
