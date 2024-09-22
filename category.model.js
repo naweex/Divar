@@ -8,6 +8,14 @@ const CategorySchema = new Schema({
     parents : {type : [Types.ObjectId] , required : false , default : []}
 } , {versionKey : false , id : false , toJSON : {virtuals : true}})
 
+
+/**
+ * Category schema 
+ * 
+ * @param refrence string,
+ * 
+ * @returns void
+ */
 CategorySchema.virtual('children' , {
     ref : 'category' ,
     localField : '_id' ,
