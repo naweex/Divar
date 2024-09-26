@@ -1,15 +1,15 @@
 /**
  * @swagger
  * tags:
- *  name: option
- *  description: option Module and Routes
+ *  name: Option
+ *  description: Option Module and Routes
  */
 
 /**
  * @swagger
  *  components:
  *      schemas:
- *          CreateOption:
+ *          CreateOption: 
  *              type: object
  *              required:
  *                  -   title
@@ -36,11 +36,11 @@
  *                          -   array
  *                  enum:
  *                      type: array
- *                      items: 
+ *                      items:
  *                          type: string
- *          UpdateOption:
- *               type: object
- *               properties:
+ *          UpdateOption: 
+ *              type: object
+ *              properties:
  *                  title:
  *                      type: string
  *                  key:
@@ -60,17 +60,18 @@
  *                          -   array
  *                  enum:
  *                      type: array
- *                      items: 
+ *                      items:
  *                          type: string
+ *                  
  */
 
 /**
  * @swagger
  * /option:
  *  post:
- *      summary: create a new option for category
+ *      summary: create new option for category
  *      tags:
- *          -   option
+ *          -   Option
  *      requestBody:
  *          content:
  *              application/x-www-form-urlencoded:
@@ -80,7 +81,7 @@
  *                  schema:
  *                      $ref: '#/components/schemas/CreateOption'
  *      responses:
- *          201:
+ *          201: 
  *              description: created
  */
 /**
@@ -89,7 +90,7 @@
  *  put:
  *      summary: updated option by id
  *      tags:
- *          -   option
+ *          -   Option
  *      requestBody:
  *          content:
  *              application/x-www-form-urlencoded:
@@ -99,23 +100,22 @@
  *                  schema:
  *                      $ref: '#/components/schemas/UpdateOption'
  *      responses:
- *          201:
+ *          201: 
  *              description: created
  */
-
 /**
  * @swagger
  * /option/by-category/{categoryId}:
  *  get:
  *      summary: get all options of category
  *      tags:
- *          -   option
+ *          -   Option
  *      parameters:
- *          -   in: path
+ *          -   in: path        
  *              name: categoryId
  *              type: string
  *      responses:
- *          200:
+ *          200: 
  *              description: successfully
  */
 /**
@@ -124,57 +124,53 @@
  *  get:
  *      summary: get all options of category
  *      tags:
- *          -   option
+ *          -   Option
  *      parameters:
- *          -   in: path
+ *          -   in: path        
  *              name: slug
  *              type: string
  *      responses:
- *          200:
+ *          200: 
  *              description: successfully
  */
-
 /**
  * @swagger
  * /option/{id}:
  *  get:
- *      summary: get options by id
+ *      summary: get option by id
  *      tags:
- *          -   option
+ *          -   Option
  *      parameters:
- *          -   in: path
+ *          -   in: path        
  *              name: id
  *              type: string
  *      responses:
- *          200:
+ *          200: 
  *              description: successfully
  */
-
 /**
  * @swagger
  * /option:
  *  get:
  *      summary: get all options
  *      tags:
- *          -   option
+ *          -   Option
  *      responses:
- *          200:
+ *          200: 
  *              description: successfully
  */
-
-
 /**
  * @swagger
  * /option/{id}:
  *  delete:
- *      summary: delete options by id
+ *      summary: delete option by id
  *      tags:
- *          -   option
+ *          -   Option
  *      parameters:
- *          -   in: path
+ *          -   in: path        
  *              name: id
  *              type: string
  *      responses:
- *          200:
+ *          200: 
  *              description: deleted successfully
  */

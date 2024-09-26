@@ -1,12 +1,10 @@
-const {Router} = require('express')
-const CategoryController = require('./category.controller')
-const categoryController = require('./category.controller')
+const { Router } = require("express");
+const categoryController = require("./category.controller");
 
-const router = Router()
-
-router.post('/' , CategoryController.create)
-router.get('/' , CategoryController.find)
-router.delete('/:id' , categoryController.remove)
+const router = Router();
+router.post("/", categoryController.create)
+router.get("/", categoryController.find)
+router.delete("/:id", categoryController.remove)
 module.exports = {
-    CategoryRouter : router
+    CategoryRouter: router
 }

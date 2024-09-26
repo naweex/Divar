@@ -1,8 +1,8 @@
 /**
  * @swagger
  * tags:
- *  name: category
- *  description: category Module and Routes
+ *  name: Category
+ *  description: Category Module and Routes
  */
 
 /**
@@ -29,7 +29,7 @@
  * @swagger
  * /category:
  *  post:
- *      summary: create a new category
+ *      summary: create new category
  *      tags:
  *          -   Category
  *      requestBody:
@@ -41,10 +41,9 @@
  *                  schema:
  *                      $ref: '#/components/schemas/CreateCategory'
  *      responses:
- *          201:
+ *          201: 
  *              description: created
  */
-
 /**
  * @swagger
  * /category:
@@ -53,7 +52,7 @@
  *      tags:
  *          -   Category
  *      responses:
- *          200:
+ *          200: 
  *              description: successfully
  */
 /**
@@ -67,7 +66,6 @@
  *          -   in: path
  *              name: id
  *      responses:
- *          200:
+ *          200: 
  *              description: successfully
  */
-

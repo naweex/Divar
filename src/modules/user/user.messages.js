@@ -1,6 +1,6 @@
 const UserMessage = {
 
 }
-
-module.exports = 
-    UserMessage
+module.exports = {
+    UserMessage,
+}
